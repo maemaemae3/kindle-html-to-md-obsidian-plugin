@@ -1,0 +1,9 @@
+{
+	"id": "kindle-html-to-md",
+	"name": "Kindle HTML to Markdown",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "Import Kindle HTML highlights and convert them to Obsidian Markdown notes.",
+	"author": "tempe",
+	"isDesktopOnly": true
+}
