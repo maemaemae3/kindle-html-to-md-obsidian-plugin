@@ -24,11 +24,11 @@ export class KindleHtmlToMdSettingTab extends PluginSettingTab {
 		containerEl.empty();
 
 		new Setting(containerEl)
-			.setName("Output folder")
-			.setDesc("Folder path within the vault where converted MD files will be saved.")
+			.setName("Output folder path")
+			.setDesc("Path inside the vault where converted files will be saved.")
 			.addText((text) =>
 				text
-					.setPlaceholder("study/book")
+					.setPlaceholder("e.g. study/book")
 					.setValue(this.plugin.settings.outputFolder)
 					.onChange(async (value) => {
 						this.plugin.settings.outputFolder = value;
@@ -37,7 +37,7 @@ export class KindleHtmlToMdSettingTab extends PluginSettingTab {
 			);
 
 		new Setting(containerEl)
-			.setName("Tag")
+			.setName("Tag name")
 			.setDesc("Obsidian tag to add to each converted note (e.g. #study/book).")
 			.addText((text) =>
 				text

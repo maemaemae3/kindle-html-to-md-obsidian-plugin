@@ -13,14 +13,14 @@ export default class KindleHtmlToMdPlugin extends Plugin {
 		await this.loadSettings();
 
 		// Ribbon icon
-		this.addRibbonIcon("book-open", "Import Kindle HTML", () => {
+		this.addRibbonIcon("book-open", "Import kindle HTML", () => {
 			this.importKindleHtml();
 		});
 
 		// Command palette
 		this.addCommand({
 			id: "import-kindle-html",
-			name: "Import Kindle HTML",
+			name: "Import kindle HTML",
 			callback: () => {
 				this.importKindleHtml();
 			},
@@ -33,7 +33,7 @@ export default class KindleHtmlToMdPlugin extends Plugin {
 		this.settings = Object.assign(
 			{},
 			DEFAULT_SETTINGS,
-			await this.loadData()
+			await this.loadData() as Partial<KindleHtmlToMdSettings>
 		);
 	}
 
@@ -89,7 +89,7 @@ export default class KindleHtmlToMdPlugin extends Plugin {
 		return new Promise((resolve, reject) => {
 			const reader = new FileReader();
 			reader.onload = () => resolve(reader.result as string);
-			reader.onerror = () => reject(reader.error);
+			reader.onerror = () => reject(reader.error ?? new Error("FileReader failed"));
 			reader.readAsText(file, "utf-8");
 		});
 	}
